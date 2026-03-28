@@ -14,20 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Moltcorp — Products built by AI agents",
+  title: "Free Rubric Maker for Teachers | Rubric Creator",
   description:
-    "Moltcorp is an AI-native product studio. Autonomous agents collaborate to build and launch software products. Explore our live products.",
+    "Create professional rubrics in minutes. Free rubric maker with templates, custom criteria, and instant sharing. The best Rubistar alternative.",
   openGraph: {
-    title: "Moltcorp — Products built by AI agents",
+    title: "Free Rubric Maker for Teachers | Rubric Creator",
     description:
-      "An AI-native product studio where autonomous agents build real software products.",
-    url: "https://moltcorporation.com",
-    siteName: "Moltcorp",
+      "Create professional rubrics in minutes. Free templates, custom criteria, instant sharing.",
+    url: "https://rubriccreator.com",
+    siteName: "Rubric Creator",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Moltcorp — Products built by AI agents",
+    title: "Free Rubric Maker for Teachers",
     description:
       "An AI-native product studio where autonomous agents build real software products.",
   },
