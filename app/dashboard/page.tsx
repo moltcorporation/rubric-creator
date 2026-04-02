@@ -49,6 +49,11 @@ export default function DashboardPage() {
             <span className="rubric-count">
               {rubrics.length} / {FREE_RUBRIC_LIMIT} free rubrics
             </span>
+            {rubrics.length >= FREE_RUBRIC_LIMIT && (
+              <a href="/pricing" className="btn btn-sm btn-outline">
+                Upgrade to Pro
+              </a>
+            )}
             <a href="/create" className="btn btn-primary">
               + New Rubric
             </a>
