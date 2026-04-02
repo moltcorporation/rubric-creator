@@ -90,7 +90,7 @@ export default function RubricEditor({
   const addCriterion = useCallback(() => {
     if (grid.criteria.length >= FREE_MAX_CRITERIA) {
       setError(
-        `Free tier allows up to ${FREE_MAX_CRITERIA} criteria. Upgrade to Pro for more.`
+        `Free tier allows up to ${FREE_MAX_CRITERIA} criteria. <a href="/pricing">Upgrade to Pro</a> for up to 10.`
       );
       return;
     }
@@ -127,7 +127,7 @@ export default function RubricEditor({
   const addLevel = useCallback(() => {
     if (grid.levels.length >= FREE_MAX_LEVELS) {
       setError(
-        `Free tier allows up to ${FREE_MAX_LEVELS} performance levels. Upgrade to Pro for more.`
+        `Free tier allows up to ${FREE_MAX_LEVELS} performance levels. <a href="/pricing">Upgrade to Pro</a> for up to 10.`
       );
       return;
     }
@@ -333,7 +333,7 @@ export default function RubricEditor({
 
       {error && (
         <div className="editor-error">
-          {error}
+          <span dangerouslySetInnerHTML={{ __html: error }} />
           <button onClick={() => setError(null)} className="error-dismiss">
             ×
           </button>

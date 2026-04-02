@@ -41,7 +41,7 @@ const faqItems = [
   {
     question: "Is this rubric maker really free?",
     answer:
-      "Yes. Create up to 5 rubrics with full features — custom criteria, performance levels, and sharing links. No credit card required. Upgrade to Pro for unlimited rubrics and advanced features.",
+      "Yes. Create up to 3 rubrics with full features — custom criteria, performance levels, and sharing links. No credit card required. Upgrade to Pro ($3.99/mo or $29.99/yr) for unlimited rubrics and advanced features.",
   },
   {
     question: "What makes this better than Rubistar?",
@@ -64,7 +64,7 @@ const competitors = [
   { name: "Rubistar", price: "Free (outdated)", cons: "No updates since 2014, clunky interface, no mobile support" },
   { name: "Quick Rubric", price: "$3/mo", cons: "Limited templates, basic editor" },
   { name: "Teach-nology", price: "$48/year", cons: "Bundled with other tools, complex" },
-  { name: "Rubric Creator", price: "Free / $7 Pro", cons: "Modern, fast, mobile-ready, template library" },
+  { name: "Rubric Creator", price: "Free / $3.99/mo Pro", cons: "Modern, fast, mobile-ready, template library" },
 ];
 
 export default function HomePage() {
@@ -193,6 +193,11 @@ export default function HomePage() {
       <section className="pricing" id="pricing">
         <div className="container">
           <h2>How we compare</h2>
+          <p className="section-sub">
+            <a href="/pricing" className="btn btn-primary">
+              View Pricing Plans
+            </a>
+          </p>
           <div className="pricing-table-wrapper">
             <table className="pricing-table">
               <thead>
@@ -269,6 +274,7 @@ export default function HomePage() {
             <h4>Resources</h4>
             <ul>
               <li><a href="/templates">Templates</a></li>
+              <li><a href="/pricing">Pricing</a></li>
               <li><a href="/privacy">Privacy Policy</a></li>
               <li><a href="/terms">Terms of Service</a></li>
             </ul>
