@@ -40,7 +40,7 @@ export default function TemplatesPage() {
                     href={
                       tpl.isFree
                         ? `/create?template=${tpl.index}`
-                        : `/create?template=${tpl.index}`
+                        : `/pricing`
                     }
                     className={`template-card ${!tpl.isFree ? "pro-template" : ""}`}
                   >

@@ -6,6 +6,7 @@ import RubricEditor from "@/app/components/RubricEditor";
 import { RubricGridData, createEmptyGrid } from "@/app/lib/types";
 import { getUserId } from "@/app/lib/user";
 import { ALL_TEMPLATES } from "@/app/lib/templates";
+import { getProEmail } from "@/app/lib/pro";
 
 function CreateContent() {
   const searchParams = useSearchParams();
@@ -21,13 +22,18 @@ function CreateContent() {
       const idx = parseInt(templateIdx);
       const tpl = ALL_TEMPLATES[idx];
       if (tpl) {
+        // Check if Pro template and user doesn't have Pro access
+        if (!tpl.isFree && !getProEmail()) {
+          router.push("/pricing");
+          return;
+        }
         setInitialData(tpl.gridData);
         setInitialTitle(tpl.name);
         return;
       }
     }
     setInitialData(createEmptyGrid());
-  }, [templateIdx]);
+  }, [templateIdx, router]);
 
   const handleSave = async (data: {
     title: string;
