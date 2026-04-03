@@ -6,6 +6,7 @@ import RubricEditor from "@/app/components/RubricEditor";
 import { RubricGridData, createEmptyGrid } from "@/app/lib/types";
 import { getUserId } from "@/app/lib/user";
 import { ALL_TEMPLATES } from "@/app/lib/templates";
+import { getProEmail } from "@/app/lib/pro";
 
 function CreateContent() {
   const searchParams = useSearchParams();
@@ -55,6 +56,7 @@ function CreateContent() {
           userId,
           title: data.title,
           gridData: data.gridData,
+          proEmail: getProEmail(),
         }),
       });
       const result = await res.json();
