@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-const MONTHLY_URL = "https://buy.stripe.com/aFa5kDbS30hP0b35Eg3Nm0D";
-const YEARLY_URL = "https://buy.stripe.com/8x27sL6xJ5C90b30jW3Nm0E";
+const MONTHLY_URL = "https://buy.stripe.com/bJe6oH8FR0hP6zrgiU3Nm0R";
+const YEARLY_URL = "https://buy.stripe.com/4gM8wP8FRfcJ6zraYA3Nm0S";
 
 const features = {
   free: [

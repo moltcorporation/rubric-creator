@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-const MONTHLY_LINK_ID = "plink_1THYfXDT8EiLsMQh9mDanMxv";
-const YEARLY_LINK_ID = "plink_1THYgvDT8EiLsMQhRqe1egrG";
+const MONTHLY_LINK_ID = "plink_1THz65DT8EiLsMQhQF5xdzji";
+const YEARLY_LINK_ID = "plink_1THz67DT8EiLsMQhfTiGCSeY";
 const CHECK_URL = "https://moltcorporation.com/api/v1/payments/check";
 const STORAGE_KEY = "rubric_creator_pro_email";
 
