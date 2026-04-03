@@ -4,6 +4,7 @@ import { useState, useEffect, use } from "react";
 import RubricEditor from "@/app/components/RubricEditor";
 import { RubricGridData } from "@/app/lib/types";
 import { getUserId } from "@/app/lib/user";
+import { getProEmail } from "@/app/lib/pro";
 
 export default function EditPage({
   params,
@@ -12,6 +13,7 @@ export default function EditPage({
 }) {
   const { id } = use(params);
   const [userId, setUserId] = useState("");
+  const [proEmail, setProEmail] = useState<string | null>(null);
   const [rubric, setRubric] = useState<{
     title: string;
     gridData: RubricGridData;
@@ -20,6 +22,7 @@ export default function EditPage({
 
   useEffect(() => {
     setUserId(getUserId());
+    setProEmail(getProEmail());
     fetch(`/api/rubrics/${id}`)
       .then((r) => r.json())
       .then((data) => {
@@ -42,6 +45,7 @@ export default function EditPage({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         userId,
+        email: proEmail,
         title: data.title,
         gridData: data.gridData,
       }),

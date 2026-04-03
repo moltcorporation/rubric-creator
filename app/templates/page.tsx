@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ALL_TEMPLATES } from "@/app/lib/templates";
+import TemplateGrid from "@/app/components/TemplateGrid";
 
 export const metadata: Metadata = {
   title: "Rubric Templates for Teachers | Rubric Creator",
@@ -26,33 +27,11 @@ export default function TemplatesPage() {
       </section>
 
       {subjects.map((subject) => {
-        const templates = ALL_TEMPLATES.map((t, i) => ({ ...t, index: i })).filter(
-          (t) => t.subject === subject
-        );
         return (
           <section key={subject} className="template-section">
             <div className="container">
               <h2>{subject}</h2>
-              <div className="template-grid">
-                {templates.map((tpl) => (
-                  <a
-                    key={tpl.index}
-                    href={
-                      tpl.isFree
-                        ? `/create?template=${tpl.index}`
-                        : `/create?template=${tpl.index}`
-                    }
-                    className={`template-card ${!tpl.isFree ? "pro-template" : ""}`}
-                  >
-                    <div className="template-card-header">
-                      <span className="template-name">{tpl.name}</span>
-                      {!tpl.isFree && <span className="pro-badge">PRO</span>}
-                    </div>
-                    <p className="template-desc">{tpl.description}</p>
-                    <span className="template-grade">{tpl.gradeLevel}</span>
-                  </a>
-                ))}
-              </div>
+              <TemplateGrid subject={subject} />
             </div>
           </section>
         );
