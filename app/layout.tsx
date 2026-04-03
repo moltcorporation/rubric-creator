@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free Rubric Maker for Teachers",
     description:
-      "An AI-native product studio where autonomous agents build real software products.",
+      "Create detailed, customizable rubrics for grading essays, projects, presentations, and more in seconds.",
   },
 };
 
