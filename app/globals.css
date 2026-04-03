@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafbfc;
-  --foreground: #1a2332;
-  --primary: #0f766e;
-  --primary-hover: #0d6560;
-  --primary-light: #f0fdfa;
-  --primary-dark: #134e4a;
-  --accent: #d97706;
-  --accent-light: #fffbeb;
-  --border: #d4dbe4;
-  --border-dark: #b0bac6;
-  --muted: #5a6778;
-  --muted-light: #8896a7;
-  --success: #0f766e;
-  --success-bg: #f0fdfa;
+  --background: #faf8f6;
+  --foreground: #2b1810;
+  --primary: #1a3a52;
+  --primary-hover: #142d42;
+  --primary-light: #f5f0e8;
+  --primary-dark: #0f2438;
+  --accent: #d4a574;
+  --accent-light: #f9f4ed;
+  --border: #d4ccc4;
+  --border-dark: #b0a8a0;
+  --muted: #5a5047;
+  --muted-light: #8a7f7a;
+  --success: #1a3a52;
+  --success-bg: #f5f0e8;
   --danger: #b91c1c;
   --danger-hover: #991b1b;
   --danger-bg: #fef2f2;
-  --surface: #f1f5f9;
+  --surface: #f1ebe4;
   --radius: 10px;
   --radius-sm: 6px;
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 10px 32px rgba(15, 23, 42, 0.1), 0 4px 8px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(27, 24, 20, 0.08), 0 1px 2px rgba(27, 24, 20, 0.04);
+  --shadow-md: 0 4px 12px rgba(27, 24, 20, 0.12), 0 2px 4px rgba(27, 24, 20, 0.04);
+  --shadow-lg: 0 10px 32px rgba(27, 24, 20, 0.15), 0 4px 8px rgba(27, 24, 20, 0.04);
 }
 
 @theme inline {
@@ -129,7 +129,7 @@ body {
 .hero {
   padding: 80px 0 60px;
   text-align: center;
-  background: linear-gradient(135deg, #134e4a 0%, #0f766e 40%, #115e59 100%);
+  background: linear-gradient(135deg, #1a3a52 0%, #2b5a7a 40%, #1a3a52 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -257,13 +257,32 @@ body {
 
 .feature-card:hover {
   box-shadow: var(--shadow-md);
-  border-color: var(--primary);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f0e8, #faf8f6);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  color: #1a3a52;
+}
+
+.feature-card:hover .feature-icon {
+  background: linear-gradient(135deg, #d4a574, #e6c8b8);
+  color: white;
 }
 
 .feature-card h3 {
   font-size: 16px;
   margin: 0 0 8px;
   color: var(--primary-dark);
+  font-weight: 600;
 }
 
 .feature-card p {
@@ -459,7 +478,7 @@ body {
 .final-cta {
   padding: 80px 0;
   text-align: center;
-  background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%);
+  background: linear-gradient(135deg, #1a3a52 0%, #2b5a7a 100%);
   color: white;
 }
 
@@ -642,7 +661,7 @@ body {
 }
 
 .criteria-header {
-  background: linear-gradient(135deg, #134e4a, #0f766e);
+  background: linear-gradient(135deg, #1a3a52, #2b5a7a);
   color: white;
   font-weight: 600;
   width: 160px;
@@ -650,7 +669,7 @@ body {
 }
 
 .level-header {
-  background: linear-gradient(135deg, #134e4a, #0f766e);
+  background: linear-gradient(135deg, #1a3a52, #2b5a7a);
   color: white;
   font-weight: 600;
   text-align: center;
