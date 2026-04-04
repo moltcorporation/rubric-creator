@@ -67,6 +67,62 @@ const competitors = [
   { name: "Rubric Creator", price: "Free / $3.99/mo Pro", cons: "Modern, fast, mobile-ready, template library" },
 ];
 
+function ClipboardCheckIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+      <path d="M9 14l2 2 4-4" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+}
+
+function ShareIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+      <polyline points="16 6 12 2 8 6" />
+      <line x1="12" y1="2" x2="12" y2="15" />
+    </svg>
+  );
+}
+
+function BarChartIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </svg>
+  );
+}
+
+function ZapIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+
+function AwardIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="8" r="7" />
+      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -93,21 +149,90 @@ export default function HomePage() {
         <div className="container">
           <h1>The Better Way to Grade</h1>
           <p className="hero-sub">
-            Stop wrestling with spreadsheets. Create professional rubrics in
-            minutes. Share with students instantly. Track progress clearly.
+            Stop wrestling with spreadsheets. Create clear, professional rubrics
+            in minutes — then share them with students in one click.
           </p>
           <div className="hero-cta">
             <a href="/create" className="btn btn-primary">
               Create Your First Rubric — Free
             </a>
             <a href="/templates" className="btn btn-secondary">
-              Browse Templates
+              Browse 50+ Templates
             </a>
           </div>
           <p className="hero-trust">
-            ✓ No credit card required &nbsp; ✓ No signup to try &nbsp; ✓ Works
-            on any device
+            No credit card required &middot; No signup to try &middot; Works on any device
           </p>
+
+          {/* Mini rubric preview */}
+          <div className="hero-preview">
+            <div className="hero-rubric">
+              <table>
+                <thead>
+                  <tr>
+                    <th className="hr-corner">Criteria</th>
+                    <th className="hr-level">Excellent (4)</th>
+                    <th className="hr-level">Proficient (3)</th>
+                    <th className="hr-level">Developing (2)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="hr-criteria">Thesis Statement</td>
+                    <td><span className="hr-grade-a">Clear, arguable, specific</span></td>
+                    <td><span className="hr-grade-b">Present but could be sharper</span></td>
+                    <td><span className="hr-grade-c">Vague or missing focus</span></td>
+                  </tr>
+                  <tr>
+                    <td className="hr-criteria">Evidence & Support</td>
+                    <td><span className="hr-grade-a">3+ strong examples cited</span></td>
+                    <td><span className="hr-grade-b">1-2 relevant examples</span></td>
+                    <td><span className="hr-grade-c">Limited or no evidence</span></td>
+                  </tr>
+                  <tr>
+                    <td className="hr-criteria">Organization</td>
+                    <td><span className="hr-grade-a">Logical flow, transitions</span></td>
+                    <td><span className="hr-grade-b">Mostly organized</span></td>
+                    <td><span className="hr-grade-c">Hard to follow structure</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="hero-rubric-label">
+              Essay Writing Rubric — one of 50+ templates included free
+            </p>
+          </div>
+
+          <div className="grade-bar">
+            <span style={{ background: "#2d7d46" }} />
+            <span style={{ background: "#3b82c6" }} />
+            <span style={{ background: "#d4a017" }} />
+            <span style={{ background: "#c0392b" }} />
+          </div>
+        </div>
+      </section>
+
+      {/* Use cases strip */}
+      <section className="use-cases">
+        <div className="container">
+          <div className="use-case-grid">
+            <div className="use-case-item">
+              <div className="use-case-number">50+</div>
+              <div className="use-case-label">Ready-made templates</div>
+            </div>
+            <div className="use-case-item">
+              <div className="use-case-number">K-12</div>
+              <div className="use-case-label">All grade levels</div>
+            </div>
+            <div className="use-case-item">
+              <div className="use-case-number">8</div>
+              <div className="use-case-label">Subject areas covered</div>
+            </div>
+            <div className="use-case-item">
+              <div className="use-case-number">&lt;3 min</div>
+              <div className="use-case-label">Create any rubric</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -116,269 +241,133 @@ export default function HomePage() {
         <div className="container">
           <h2>Built by teachers, for teachers</h2>
           <p className="section-sub">
-            Everything you need to create clearer expectations and grade more
-            fairly
+            Everything you need to set clear expectations and grade more fairly
           </p>
           <div className="feature-grid">
             <div className="feature-card">
-              <h3>📋 Flexible Structure</h3>
+              <div className="feature-icon"><ClipboardCheckIcon /></div>
+              <h3>Flexible Criteria & Scales</h3>
               <p>
                 Define any criteria and performance levels. Add weighted points,
-                scales, or descriptive levels. Customize everything.
+                4-point scales, or descriptive levels. Build rubrics that match
+                exactly how you grade.
               </p>
             </div>
             <div className="feature-card">
-              <h3>⏱️ Save Hours Every Year</h3>
+              <div className="feature-icon"><ClockIcon /></div>
+              <h3>Save Hours Every Term</h3>
               <p>
-                Build once, reuse forever. Our template library covers K-12
-                assignments across all subjects. Start in seconds.
+                Build once, reuse forever. Our template library covers essays,
+                labs, presentations, and projects across K-12. Start grading in
+                seconds, not hours.
               </p>
             </div>
             <div className="feature-card">
-              <h3>👥 Share Smart</h3>
+              <div className="feature-icon"><ShareIcon /></div>
+              <h3>One Link, Every Student</h3>
               <p>
-                One link for all students. They see clear expectations before
-                submitting. Share anytime, update instantly — no emails needed.
+                Share rubrics before the assignment is due. Students see clear
+                expectations on any device. Update once — every link stays current.
               </p>
             </div>
             <div className="feature-card">
-              <h3>📊 Track Everything</h3>
+              <div className="feature-icon"><BarChartIcon /></div>
+              <h3>Print & Export Ready</h3>
               <p>
-                View rubrics on any device. Print, screenshot, or export to PDF.
-                Clean formatting that's ready for portfolios and parent
-                conferences.
+                Clean PDF exports for portfolios, parent conferences, and IEP
+                meetings. Print-friendly formatting that looks professional on paper.
               </p>
             </div>
             <div className="feature-card">
-              <h3>⚡ 3-Minute Setup</h3>
+              <div className="feature-icon"><ZapIcon /></div>
+              <h3>3-Minute Setup</h3>
               <p>
-                No steep learning curve. No technical knowledge required. Start
-                from a template or blank slate — you're grading in minutes.
+                No steep learning curve. No training required. Pick a template or
+                start blank — your rubric is ready before the bell rings.
               </p>
             </div>
             <div className="feature-card">
-              <h3>🎯 Modern Alternative</h3>
+              <div className="feature-icon"><AwardIcon /></div>
+              <h3>The Modern Rubistar</h3>
               <p>
-                Rubistar hasn't been updated since 2014. We're built for today's
-                teachers with mobile support, real-time editing, and clean
-                design.
+                Rubistar hasn&apos;t been updated since 2014. We&apos;re built for
+                today&apos;s classrooms — mobile-first, instant sharing, and a clean
+                interface your students will actually read.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Visual Example */}
+      {/* Visual rubric example */}
       <section className="templates-preview">
         <div className="container">
-          <h2>See what you create</h2>
+          <h2>See what your rubrics look like</h2>
           <p className="section-sub">
-            Clean, professional rubrics ready to share with students
+            Color-coded performance levels help students understand expectations at a glance
           </p>
-          <div style={{ maxWidth: "900px", margin: "40px auto" }}>
-            <div
-              style={{
-                border: "1px solid var(--border-dark)",
-                borderRadius: "var(--radius)",
-                overflow: "hidden",
-                boxShadow: "var(--shadow-md)",
-              }}
-            >
-              <table
-                style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  fontSize: "13px",
-                }}
-              >
-                <thead>
-                  <tr
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #134e4a, #0f766e)",
-                      color: "white",
-                    }}
-                  >
-                    <th
-                      style={{
-                        padding: "12px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        minWidth: "140px",
-                      }}
-                    >
-                      Criterion
-                    </th>
-                    <th
-                      style={{
-                        padding: "12px",
-                        textAlign: "center",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Excellent
-                    </th>
-                    <th
-                      style={{
-                        padding: "12px",
-                        textAlign: "center",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Good
-                    </th>
-                    <th
-                      style={{
-                        padding: "12px",
-                        textAlign: "center",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Needs Work
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td
-                      style={{
-                        padding: "12px",
-                        fontWeight: "600",
-                        background: "var(--surface)",
-                        borderRight: "1px solid var(--border-dark)",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Organization
-                    </td>
-                    <td
-                      style={{
-                        padding: "12px",
-                        borderRight: "1px solid var(--border-dark)",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Clear intro, body, conclusion
-                    </td>
-                    <td
-                      style={{
-                        padding: "12px",
-                        borderRight: "1px solid var(--border-dark)",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Mostly organized
-                    </td>
-                    <td
-                      style={{
-                        padding: "12px",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Unclear structure
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      style={{
-                        padding: "12px",
-                        fontWeight: "600",
-                        background: "var(--surface)",
-                        borderRight: "1px solid var(--border-dark)",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Evidence
-                    </td>
-                    <td
-                      style={{
-                        padding: "12px",
-                        borderRight: "1px solid var(--border-dark)",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Multiple strong examples
-                    </td>
-                    <td
-                      style={{
-                        padding: "12px",
-                        borderRight: "1px solid var(--border-dark)",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Some examples provided
-                    </td>
-                    <td
-                      style={{
-                        padding: "12px",
-                        borderBottom: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Limited examples
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      style={{
-                        padding: "12px",
-                        fontWeight: "600",
-                        background: "var(--surface)",
-                        borderRight: "1px solid var(--border-dark)",
-                      }}
-                    >
-                      Writing Quality
-                    </td>
-                    <td style={{ padding: "12px", borderRight: "1px solid var(--border-dark)" }}>
-                      Engaging, error-free
-                    </td>
-                    <td style={{ padding: "12px", borderRight: "1px solid var(--border-dark)" }}>
-                      Clear, few errors
-                    </td>
-                    <td style={{ padding: "12px" }}>
-                      Unclear, many errors
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p
-              style={{
-                textAlign: "center",
-                color: "var(--muted)",
-                fontSize: "13px",
-                marginTop: "20px",
-              }}
-            >
-              This is just one example. Fully customize criteria, levels,
-              descriptions, and point values.
+          <div className="rubric-example">
+            <table className="rubric-example-table">
+              <thead>
+                <tr>
+                  <th className="re-corner">Criteria</th>
+                  <th className="re-level-excellent">Excellent (4 pts)</th>
+                  <th className="re-level-good">Good (3 pts)</th>
+                  <th className="re-level-needs">Needs Work (2 pts)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="re-criteria">Organization</td>
+                  <td>Clear intro, body, and conclusion with smooth transitions between ideas</td>
+                  <td>Structure is present but transitions could be stronger</td>
+                  <td>Lacks clear structure; ideas jump without connection</td>
+                </tr>
+                <tr>
+                  <td className="re-criteria">Evidence</td>
+                  <td>3+ strong examples with proper citations from source material</td>
+                  <td>1-2 relevant examples, some missing citations</td>
+                  <td>Limited evidence; claims are unsupported</td>
+                </tr>
+                <tr>
+                  <td className="re-criteria">Writing Quality</td>
+                  <td>Engaging voice, varied sentences, no grammar errors</td>
+                  <td>Clear writing with minor errors that don&apos;t distract</td>
+                  <td>Frequent errors make meaning unclear</td>
+                </tr>
+              </tbody>
+            </table>
+            <p className="rubric-example-note">
+              Fully customizable — change criteria, levels, descriptions, and point values to match any assignment.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Template Preview */}
-      <section style={{ padding: "60px 0", background: "white" }}>
+      {/* Template subjects */}
+      <section className="browse-templates-section">
         <div className="container">
-          <h2 style={{ textAlign: "center", fontSize: "24px", marginBottom: "12px" }}>
-            Browse 30+ templates
-          </h2>
+          <h2>Templates for every subject</h2>
           <p className="section-sub">
-            Pre-built for essays, presentations, projects, labs, and more
+            Pre-built by experienced educators. Customize any template in seconds.
           </p>
           <div className="template-grid">
             {[
-              "Essay Writing",
-              "Oral Presentation",
-              "Group Project",
-              "Science Lab Report",
-              "Art Portfolio",
-              "Math Problem Solving",
-              "Research Paper",
-              "Class Participation",
-            ].map((name) => (
-              <a key={name} href="/templates" className="template-card">
-                <span className="template-name">{name}</span>
-                <span className="template-arrow">→</span>
+              { name: "Essay Writing", icon: "📝", count: "8 templates" },
+              { name: "Oral Presentations", icon: "🎤", count: "5 templates" },
+              { name: "Group Projects", icon: "👥", count: "4 templates" },
+              { name: "Science Labs", icon: "🔬", count: "6 templates" },
+              { name: "Art & Design", icon: "🎨", count: "4 templates" },
+              { name: "Math Problem Solving", icon: "📐", count: "5 templates" },
+              { name: "Research Papers", icon: "📚", count: "5 templates" },
+              { name: "Class Participation", icon: "✋", count: "3 templates" },
+            ].map((subject) => (
+              <a key={subject.name} href="/templates" className="subject-card">
+                <div className="subject-icon">{subject.icon}</div>
+                <div className="subject-card-text">
+                  <span className="subject-card-title">{subject.name}</span>
+                  <span className="subject-card-count">{subject.count}</span>
+                </div>
               </a>
             ))}
           </div>
@@ -451,7 +440,7 @@ export default function HomePage() {
         <div className="container footer-grid">
           <div>
             <h4>Rubric Creator</h4>
-            <p>Free rubric maker for teachers.</p>
+            <p>Free rubric maker for K-12 teachers.</p>
           </div>
           <div>
             <h4>Related Tools</h4>
