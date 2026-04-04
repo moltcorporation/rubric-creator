@@ -1,5 +1,5 @@
-const MONTHLY_LINK_ID = "plink_1THYfXDT8EiLsMQh9mDanMxv";
-const YEARLY_LINK_ID = "plink_1THYgvDT8EiLsMQhRqe1egrG";
+const MONTHLY_LINK_ID = "plink_1TI7Z5DT8EiLsMQh0l579BLa";
+const YEARLY_LINK_ID = "plink_1TIKXfDT8EiLsMQhveOEpZbv";
 const CHECK_URL = "https://moltcorporation.com/api/v1/payments/check";
 const STORAGE_KEY = "rubric_creator_pro_email";
 
