@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import {
   RubricGridData,
   generateId,
   FREE_MAX_CRITERIA,
   FREE_MAX_LEVELS,
 } from "@/app/lib/types";
+import { getProEmail, checkProAccess } from "@/app/lib/pro";
 
 interface RubricEditorProps {
   initialData: RubricGridData;
@@ -35,7 +36,35 @@ export default function RubricEditor({
   const [shareLoading, setShareLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [currentId, setCurrentId] = useState<string | null>(rubricId);
+  const [isPro, setIsPro] = useState(false);
+  const [proChecked, setProChecked] = useState(false);
+  const [exportCount, setExportCount] = useState(0);
   const printRef = useRef<HTMLDivElement>(null);
+
+  // Check Pro status on mount
+  useEffect(() => {
+    const checkPro = async () => {
+      const email = getProEmail();
+      if (email) {
+        const hasAccess = await checkProAccess(email);
+        setIsPro(hasAccess);
+      }
+      setProChecked(true);
+    };
+    checkPro();
+  }, []);
+
+  // Load daily export count from localStorage
+  useEffect(() => {
+    const today = new Date().toDateString();
+    const stored = localStorage.getItem("rubric_export_date");
+    const count = localStorage.getItem("rubric_export_count");
+    if (stored === today && count) {
+      setExportCount(parseInt(count));
+    } else {
+      setExportCount(0);
+    }
+  }, []);
 
   const updateCell = useCallback(
     (criteriaId: string, levelId: string, value: string) => {
@@ -88,9 +117,12 @@ export default function RubricEditor({
   );
 
   const addCriterion = useCallback(() => {
-    if (grid.criteria.length >= FREE_MAX_CRITERIA) {
+    const maxCriteria = isPro ? 10 : FREE_MAX_CRITERIA;
+    if (grid.criteria.length >= maxCriteria) {
       setError(
-        `Free tier allows up to ${FREE_MAX_CRITERIA} criteria. <a href="/pricing">Upgrade to Pro</a> for up to 10.`
+        isPro
+          ? `Pro tier allows up to ${maxCriteria} criteria.`
+          : `Free tier allows up to ${FREE_MAX_CRITERIA} criteria. <a href="/pricing">Upgrade to Pro</a> for up to 10.`
       );
       return;
     }
@@ -103,7 +135,7 @@ export default function RubricEditor({
     }));
     setSaved(false);
     setError(null);
-  }, [grid.criteria.length]);
+  }, [grid.criteria.length, isPro]);
 
   const removeCriterion = useCallback(
     (id: string) => {
@@ -125,9 +157,12 @@ export default function RubricEditor({
   );
 
   const addLevel = useCallback(() => {
-    if (grid.levels.length >= FREE_MAX_LEVELS) {
+    const maxLevels = isPro ? 10 : FREE_MAX_LEVELS;
+    if (grid.levels.length >= maxLevels) {
       setError(
-        `Free tier allows up to ${FREE_MAX_LEVELS} performance levels. <a href="/pricing">Upgrade to Pro</a> for up to 10.`
+        isPro
+          ? `Pro tier allows up to ${maxLevels} performance levels.`
+          : `Free tier allows up to ${FREE_MAX_LEVELS} performance levels. <a href="/pricing">Upgrade to Pro</a> for up to 10.`
       );
       return;
     }
@@ -145,7 +180,7 @@ export default function RubricEditor({
     }));
     setSaved(false);
     setError(null);
-  }, [grid.levels]);
+  }, [grid.levels, isPro]);
 
   const removeLevel = useCallback(
     (id: string) => {
@@ -215,6 +250,25 @@ export default function RubricEditor({
   }, []);
 
   const handleExportPdf = useCallback(async () => {
+    // Check export limit for free users
+    if (!isPro) {
+      const today = new Date().toDateString();
+      const stored = localStorage.getItem("rubric_export_date");
+      const count = parseInt(localStorage.getItem("rubric_export_count") || "0");
+
+      if (stored === today && count >= 2) {
+        setError(
+          `Free tier allows 2 exports per day. <a href="/pricing">Upgrade to Pro</a> for unlimited exports.`
+        );
+        return;
+      }
+
+      // Increment counter
+      localStorage.setItem("rubric_export_date", today);
+      localStorage.setItem("rubric_export_count", String(count + 1));
+      setExportCount(count + 1);
+    }
+
     const { jsPDF } = await import("jspdf");
     const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
     const pageW = doc.internal.pageSize.getWidth();
@@ -227,10 +281,17 @@ export default function RubricEditor({
     doc.text(title, margin, y + 6);
     y += 12;
 
-    // Watermark
+    // Attribution / watermark for free users
     doc.setFontSize(8);
-    doc.setTextColor(180);
-    doc.text("Created with Rubric Creator — rubriccreator.com", margin, y);
+    if (!isPro) {
+      doc.setTextColor(200, 0, 0);
+      doc.setFont("helvetica", "bold");
+      doc.text("FREE TIER - Created with Rubric Creator — rubriccreator.com", margin, y);
+      doc.setFont("helvetica", "normal");
+    } else {
+      doc.setTextColor(180);
+      doc.text("Created with Rubric Creator — rubriccreator.com", margin, y);
+    }
     doc.setTextColor(0);
     y += 8;
 
@@ -297,7 +358,7 @@ export default function RubricEditor({
     });
 
     doc.save(`${title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}.pdf`);
-  }, [title, grid]);
+  }, [title, grid, isPro]);
 
   return (
     <div className="editor-layout">
