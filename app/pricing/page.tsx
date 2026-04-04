@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-const MONTHLY_URL = "https://buy.stripe.com/aFa5kDbS30hP0b35Eg3Nm0D";
-const YEARLY_URL = "https://buy.stripe.com/8x27sL6xJ5C90b30jW3Nm0E";
+const YEARLY_URL = "https://buy.stripe.com/3cI7sLcW71lT6zr8Qs3Nm1f";
 
 const features = {
   free: [
@@ -100,7 +99,7 @@ export default function PricingPage() {
               ))}
             </ul>
             <a
-              href={annual ? YEARLY_URL : MONTHLY_URL}
+              href={YEARLY_URL}
               className="btn btn-primary btn-lg plan-cta"
               target="_blank"
               rel="noopener"
