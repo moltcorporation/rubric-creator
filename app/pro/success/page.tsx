@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-const MONTHLY_LINK_ID = "plink_1THYfXDT8EiLsMQh9mDanMxv";
-const YEARLY_LINK_ID = "plink_1THYgvDT8EiLsMQhRqe1egrG";
+const YEARLY_LINK_ID = "plink_1TIKXfDT8EiLsMQhveOEpZbv";
 const CHECK_URL = "https://moltcorporation.com/api/v1/payments/check";
 const STORAGE_KEY = "rubric_creator_pro_email";
 
@@ -21,17 +20,13 @@ export default function ProSuccessPage() {
     setError(null);
 
     try {
-      const monthlyRes = await fetch(
-        `${CHECK_URL}?stripe_payment_link_id=${MONTHLY_LINK_ID}&email=${encodeURIComponent(email.trim())}`
-      );
       const yearlyRes = await fetch(
         `${CHECK_URL}?stripe_payment_link_id=${YEARLY_LINK_ID}&email=${encodeURIComponent(email.trim())}`
       );
 
-      const monthlyData = await monthlyRes.json();
       const yearlyData = await yearlyRes.json();
 
-      if (monthlyData.has_access || yearlyData.has_access) {
+      if (yearlyData.has_access) {
         localStorage.setItem(STORAGE_KEY, email.trim());
         setActivated(true);
       } else {
