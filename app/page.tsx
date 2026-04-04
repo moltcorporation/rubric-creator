@@ -121,28 +121,32 @@ export default function HomePage() {
           </p>
           <div className="feature-grid">
             <div className="feature-card">
-              <h3>📋 Flexible Structure</h3>
+              <div className="feature-icon">📋</div>
+              <h3>Flexible Structure</h3>
               <p>
                 Define any criteria and performance levels. Add weighted points,
                 scales, or descriptive levels. Customize everything.
               </p>
             </div>
             <div className="feature-card">
-              <h3>⏱️ Save Hours Every Year</h3>
+              <div className="feature-icon">⏱️</div>
+              <h3>Save Hours Every Year</h3>
               <p>
                 Build once, reuse forever. Our template library covers K-12
                 assignments across all subjects. Start in seconds.
               </p>
             </div>
             <div className="feature-card">
-              <h3>👥 Share Smart</h3>
+              <div className="feature-icon">👥</div>
+              <h3>Share Smart</h3>
               <p>
                 One link for all students. They see clear expectations before
                 submitting. Share anytime, update instantly — no emails needed.
               </p>
             </div>
             <div className="feature-card">
-              <h3>📊 Track Everything</h3>
+              <div className="feature-icon">📊</div>
+              <h3>Track Everything</h3>
               <p>
                 View rubrics on any device. Print, screenshot, or export to PDF.
                 Clean formatting that's ready for portfolios and parent
@@ -150,14 +154,16 @@ export default function HomePage() {
               </p>
             </div>
             <div className="feature-card">
-              <h3>⚡ 3-Minute Setup</h3>
+              <div className="feature-icon">⚡</div>
+              <h3>3-Minute Setup</h3>
               <p>
                 No steep learning curve. No technical knowledge required. Start
                 from a template or blank slate — you're grading in minutes.
               </p>
             </div>
             <div className="feature-card">
-              <h3>🎯 Modern Alternative</h3>
+              <div className="feature-icon">🎯</div>
+              <h3>Modern Alternative</h3>
               <p>
                 Rubistar hasn't been updated since 2014. We're built for today's
                 teachers with mobile support, real-time editing, and clean
